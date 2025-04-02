@@ -16,5 +16,12 @@ pipeline{
                 '''
             }
         }
+        stage('Build Docker Image'){
+            script{
+                sh '''
+                    docker build -t sunera25/my-app-1.0 .
+                '''
+            }
+        }
     }
 }
