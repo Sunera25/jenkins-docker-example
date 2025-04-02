@@ -26,5 +26,19 @@ pipeline{
                 }
             }
         }
+
+        stage('Push Dockker Image'){
+            steps{
+                script{
+                    sh'''
+                        withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                         // some block
+                         docker login -u sunera25 -p ${dockerhubpwd}
+                         docker push sunera25/my-app-1.0
+                    '''
+                }
+            }
+        }
+
     }
 }
